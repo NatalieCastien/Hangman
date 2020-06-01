@@ -1,0 +1,23 @@
+{
+  "name": "Hangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatalieCastien/Hangman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NatalieCastien/Hangman/issues"
+  },
+  "homepage": "https://github.com/NatalieCastien/Hangman#readme",
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
