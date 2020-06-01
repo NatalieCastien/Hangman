@@ -15,11 +15,11 @@ const functions = {
   randomWord: () => wordList[Math.floor(Math.random() * wordList.length)],
   turnAmount: () => {
     if (guess === false) {
-      return turns - 1;
+      return lives - 1;
     }
   },
   loseGame: () => {
-    if (lastTurn === 0) {
+    if (lives === 0) {
       return true;
     }
   },

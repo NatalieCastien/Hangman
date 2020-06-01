@@ -10,7 +10,7 @@ const wordList = [
   "snoer",
   "geeuw",
 ];
-let maxAmount = 5;
+let lives = 7;
 
 //Willekeurig woord
 const randomWord = (words) => words[Math.floor(Math.random() * words.length)];
@@ -31,16 +31,15 @@ const clean = function () {
   document.querySelector("input").value = "";
 };
 
-let gameOver;
+let gameDone;
 const winTheGame = function () {
   document.querySelector(".win").style.display = "block";
-  gameOver = true;
+  gameDone = true;
 };
 
-const lose4 = function () {
-  // when losing 3 times, this has to happen
+const loseTheGame = function () {
   document.querySelector(".lose").style.display = "block";
-  gameOver = true;
+  gameDone = true;
 };
 
 const spanTheWord1 = function (word) {
@@ -49,7 +48,7 @@ const spanTheWord1 = function (word) {
 
 let tries = 0;
 const updateTriesDisplay = function (tries) {
-  document.querySelector(".lives span").innerHTML = 5 - tries;
+  document.querySelector(".lives span").innerHTML = lives - tries;
 };
 
 const letters = function (word, inputs) {
@@ -74,7 +73,7 @@ const theWord = function (word, inputLetterWords) {
 const isLetterIncluded = (word, letter) => {
   if (!word.includes(letter)) {
     tries++;
-    document.querySelector(".lives span").innerHTML = 5 - tries;
+    document.querySelector(".lives span").innerHTML = lives - tries;
   }
 };
 const fillGuessedLetters = (inputs, letter) => {
@@ -84,13 +83,13 @@ const fillGuessedLetters = (inputs, letter) => {
 };
 
 const guessLetter = function () {
-  if (gameOver) {
+  if (gameDone) {
     return;
   }
   const input = document.querySelector("input").value;
   document.querySelector("input").value = "";
 
-  // Check of de letter niet al eerder is ingevoerd
+  //Check of de letter niet al eerder is ingevoerd
   if (inputs.includes(input) || input === "") {
     return;
   }
@@ -103,14 +102,14 @@ const guessLetter = function () {
 
   if (wordGuessed(word, inputs)) {
     winTheGame();
-  } else if (tries >= 5) {
-    lose4();
+  } else if (tries >= lives) {
+    loseTheGame();
   }
 };
 
 //Startscherm van het spel
 function beginTheGame() {
-  gameOver = false;
+  gameDone = false;
   document.querySelector(".win").style.display = "none";
   document.querySelector(".lose").style.display = "none";
   document.querySelector("input").value = "";
@@ -119,7 +118,7 @@ function beginTheGame() {
   document.querySelector(".lose p span").innerHTML = `"${word.join("")}"`;
 
   tries = 0;
-  document.querySelector(".lives span").innerHTML = 5 - 0;
+  document.querySelector(".lives span").innerHTML = lives - 0;
 
   inputs = [];
   theWord(word, inputs);
