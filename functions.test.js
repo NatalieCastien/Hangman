@@ -1,4 +1,3 @@
-
 const functions = require("./functions");
 
 test("Letter should be in the word", () => {
@@ -36,16 +35,17 @@ test("You should not the game", () => {
   const word = ["t", "r", "e", "e"];
   const expected = false;
   expect(functions.isWordGuessed(word, inputs)).toBe(expected);
-  
+});
+
 test("Should contain word", () => {
   const wordList = [
-  "vis",
-  "toeter",
-  "developer",
-  "telefoon",
-  "moeder",
-  "snoer",
-  "geeuw",
+    "vis",
+    "toeter",
+    "developer",
+    "telefoon",
+    "moeder",
+    "snoer",
+    "geeuw",
   ];
   expect(randomWord()).not.toBeFalsy();
 });
@@ -60,4 +60,3 @@ test("Last turn equals game over!", () => {
   let lastTurn = 0;
   expect(loseGame()).toBe(true);
 });
-
