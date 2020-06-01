@@ -71,23 +71,33 @@ const theWord = function (word, inputLetterWords) {
   document.querySelector(".the_word").innerHTML = display.join(" ");
 };
 
+const isLetterIncluded = (word, letter) => {
+  if (!word.includes(letter)) {
+    tries++;
+    document.querySelector(".lives span").innerHTML = 5 - tries;
+  }
+};
+const fillGuessedLetters = (inputs, letter) => {
+  letter = letter.toLowerCase();
+  inputs.push(letter);
+  return inputs;
+};
+
 const guessLetter = function () {
   if (gameOver) {
     return;
   }
-  const input1 = document.querySelector("input").value;
+  const input = document.querySelector("input").value;
   document.querySelector("input").value = "";
 
-  if (inputs.includes(input1) || input1 === "") {
+  // Check of de letter niet al eerder is ingevoerd
+  if (inputs.includes(input) || input === "") {
     return;
   }
 
-  if (!word.includes(input1)) {
-    tries++;
-    document.querySelector(".lives span").innerHTML = 5 - tries;
-  }
+  isLetterIncluded(word, input);
+  fillGuessedLetters(inputs, input);
 
-  inputs.push(input1);
   theWord(word, inputs);
   letters(word, inputs);
 
