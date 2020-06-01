@@ -1,3 +1,4 @@
+
 const functions = {
   guessedLetters: [],
   fillGuessedLetters: (inputs, letter) => {
@@ -12,6 +13,15 @@ const functions = {
     and it will return true, if not it returns false */
     return remaining.length === 0;
   },
+  randomWord: () => wordList[Math.floor(Math.random() * wordList.length)];,
+  turnAmount: () => {
+  if (guess === false) {
+    return turns - 1;
+  },
+  loseGame: () => {
+  if (lastTurn === 0) {
+    return true;
+  }
 };
 
 module.exports = functions;
