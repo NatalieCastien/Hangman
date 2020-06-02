@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "Black Flag";
+  src: url("/assets/BlackFlag.ttf");
+}
+@font-face {
+  font-family: "Trinigan";
+  src: url("/assets/trinigan.ttf");
+}
+
 body {
   background-image: url("assets/backgroundharbor.jpg");
   background-repeat: no-repeat;
@@ -9,9 +18,9 @@ body {
   grid-template-areas:
     "t t t t t t"
     "g g . . s s";
-  grid-template-rows: auto auto;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 20px;
+  grid-template-rows: auto 600px;
+  grid-template-columns: repeat(6, auto);
+  grid-gap: 5px;
 }
 
 .title {
@@ -66,4 +75,102 @@ body {
 
 .sign {
   grid-area: s;
+  text-align: center;
+  position: relative;
+  color: white;
+  font-family: "Trinigan";
+  text-shadow: 3px 3px 10px black, -3px -3px 6px black;
+}
+.sign-content {
+  position: absolute;
+  top: 29%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sign h2 {
+  font-size: 2rem;
+}
+.sign h3 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.sign p {
+  font-size: 1.3rem;
+  margin: 0 0 30px 0;
+}
+.sign input {
+  background: #948b82;
+  color: white;
+  height: 32px;
+  font-family: "Trinigan";
+  font-size: 1.5rem;
+}
+.sign input::placeholder {
+  color: white;
+  font-family: "Trinigan";
+  font-size: 1.5rem;
+}
+.sign input:focus {
+  outline: none;
+}
+
+#theWord {
+  font-size: 1.9rem;
+  padding-top: 10px;
+}
+#guessedLetters {
+  padding: 10px;
+  font-size: 1.2rem;
+}
+#incorrect {
+  padding-top: 20px;
+  margin-bottom: 0;
+}
+
+/* Buttons */
+button {
+  background-image: url("assets/woodtexture.jpg");
+  background-size: cover;
+  color: white;
+  font-family: "Trinigan";
+  font-size: 1.5rem;
+}
+button:hover {
+  cursor: pointer;
+  filter: saturate(600%);
+  box-shadow: 1px 1px 5px white;
+}
+button:focus {
+  border: none;
+  outline: none;
+}
+
+@media (max-width: 800px) {
+  .container {
+    grid-template-areas:
+      "t t t t t t"
+      "g g g . . ."
+      "s s s s s s";
+    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .sign-content {
+    position: absolute;
+    top: 24%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+@media (max-width: 521px) {
+  .sign-content {
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .sign-image {
+    width: 95%;
+  }
 }
