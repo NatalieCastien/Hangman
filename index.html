@@ -7,7 +7,6 @@
     <title>Hangman!!!</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-
   <body>
     <div class="container">
       <div class="title">
@@ -16,7 +15,7 @@
       </div>
 
       <div class="gallow">
-        <p>Hier komt een galg...</p>
+        <img class="noose" src="assets/noose.png" />
 
         <div class="win">
           <h2>You won!</h2>
@@ -25,7 +24,8 @@
 
         <div class="lose">
           <h2>You lost..</h2>
-          <img src="lose.gif" />
+          <img class="ghost" src="assets/ghost.png" />
+          <audio src="assets/ghostwail.mp3" autoplay></audio>
           <p>The chosen word was: <span id="wordToBeGuessed"></span></p>
         </div>
       </div>
