@@ -15,9 +15,8 @@ const wordList = [
   "amputation",
   "scream",
   "slaughter",
-  "assasin",
+  "assassin",
   "crow",
-  "scream",
   "pitchfork",
   "gallows",
   "witchcraft",
@@ -39,11 +38,9 @@ const isWordGuessed = (word, inputs) => {
   return remaining.length === 0;
 };
 
-const cleanInputField = function () {
-  inputField.value = "";
-};
+const cleanInputField = () => (inputField.value = "");
 
-const winTheGame = function () {
+const winTheGame = () => {
   inputSection.style.display = "none";
   winAnimation.style.display = "block";
 
@@ -57,7 +54,7 @@ const winTheGame = function () {
   gameDone = true;
 };
 
-const loseTheGame = function () {
+const loseTheGame = () => {
   loseAnimation.style.display = "block";
   inputSection.style.display = "none";
   new Audio("assets/ghostwail.mp3").play();
@@ -69,7 +66,7 @@ const loseTheGame = function () {
   gameDone = true;
 };
 
-const displayWrongLetters = function (word, inputs) {
+const displayWrongLetters = (word, inputs) => {
   let wrongLetters = inputs.filter(function (letter) {
     // get the letters that aren't in the word
     return !word.includes(letter);
@@ -77,7 +74,7 @@ const displayWrongLetters = function (word, inputs) {
   guessedLetters.innerHTML = wrongLetters.join(" ");
 };
 
-const displayTheWord = function (word, inputLetterWords) {
+const displayTheWord = (word, inputLetterWords) => {
   let display = word.map(function (letter) {
     if (inputLetterWords.includes(letter)) {
       return letter;
@@ -104,11 +101,7 @@ const fillGuessedLetters = (inputs, letter) => {
   return inputs;
 };
 
-const guessLetter = function () {
-  // if (gameDone) {
-  //   return;
-  // }
-
+const guessLetter = () => {
   const input = inputField.value;
   cleanInputField();
 
@@ -140,7 +133,7 @@ const guessLetter = function () {
 };
 
 //Starting screen of the game
-function beginTheGame() {
+const beginTheGame = () => {
   gameDone = false;
   winAnimation.style.display = "none";
   loseAnimation.style.display = "none";
@@ -157,10 +150,10 @@ function beginTheGame() {
   displayTheWord(word, inputs);
   displayWrongLetters(word, inputs);
   inputField.focus();
-}
+};
 
 //The game starts here
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   guessButton.addEventListener("click", guessLetter);
   inputField.addEventListener("keyup", (event) => {
     if (event.key == "Enter") {
