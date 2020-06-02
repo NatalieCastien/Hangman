@@ -7,6 +7,15 @@
   src: url("/assets/trinigan.ttf");
 }
 
+/*Music Button*/
+.musicbutton {
+  position: absolute;
+}
+.grammophone {
+  filter: invert(100%);
+  width: 20px;
+}
+
 /*Background*/
 body {
   background-image: url("assets/backgroundharbor.jpg");

@@ -8,12 +8,12 @@ const lifeSpan = document.getElementById("lifeSpan");
 const guessedLetters = document.getElementById("guessedLetters");
 const guessButton = document.querySelector(".guess");
 const restartButton = document.querySelector(".restart");
+const noose = document.querySelector(".noose");
 
 const wordList = [
   "graveyard",
   "zombie",
   "amputation",
-  "scream",
   "slaughter",
   "assassin",
   "crow",
@@ -46,7 +46,6 @@ const winTheGame = () => {
 
   new Audio("assets/sighofrelief.mp3").play();
   function removeNoose() {
-    const noose = document.querySelector(".noose");
     noose.classList.add("nooseaway");
   }
   removeNoose();
@@ -128,13 +127,14 @@ const guessLetter = () => {
       loseTheGame();
     }
   } else {
-    inputField.placeholder = "Tryin' to cheat ay?";
+    inputField.placeholder = "Tryin' to cheat, aye?";
   }
 };
 
 //Starting screen of the game
 const beginTheGame = () => {
   gameDone = false;
+  noose.classList.remove("nooseaway");
   winAnimation.style.display = "none";
   loseAnimation.style.display = "none";
   inputSection.style.display = "block";
@@ -162,4 +162,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   restartButton.addEventListener("click", beginTheGame);
   beginTheGame();
+});
+
+//Button to start background music
+let playButton = document.querySelector(".musicbutton");
+playButton.addEventListener("click", () => {
+  new Audio("assets/harbor.mp3").play();
 });
