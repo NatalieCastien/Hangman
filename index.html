@@ -35,17 +35,15 @@
       <div class="sign">
         <img class="sign-image" src="assets/woodensign.png" />
         <section class="sign-content">
-          <p class="lives">
-            You have <span id="lifeSpan"></span> lives remaining!
-          </p>
-          <input type="text" placeholder="Try yer luck!" maxlength="1" />
-          <button class="guess">Guess</button>
-
+          <p id="lifeSpan"></p>
+          <section class="input-section">
+            <input type="text" placeholder="Try yer luck!" maxlength="1" />
+            <button class="guess">Guess</button>
+          </section>
           <!-- <h2>Current word:</h2> -->
           <div id="theWord">_ _ _ _ _</div>
           <p id="incorrect">Incorrectly guessed letters:</p>
           <div id="guessedLetters"></div>
-
           <button class="restart">Restart</button>
         </section>
       </div>
