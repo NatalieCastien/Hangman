@@ -79,6 +79,7 @@ body {
   align-items: right;
 }
 
+/* Ghost animation */
 .ghost {
   position: absolute;
   bottom: -35px;
@@ -149,7 +150,6 @@ body {
   color: white;
   font-family: "Trinigan";
   text-shadow: 3px 3px 10px black, -3px -3px 6px black;
-  /* background: url(assets/woodensign.png); */
 }
 .sign-content {
   position: absolute;

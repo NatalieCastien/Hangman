@@ -24,9 +24,14 @@ const wordList = [
   "shadow",
   "nightmare",
   "moonlight",
+  "skull",
+  "kill",
+  "tomb",
+  "dead",
+  "ash",
 ];
 
-let lives = 3;
+let lives = 5;
 let tries = 0;
 let gameDone;
 
@@ -154,19 +159,17 @@ const beginTheGame = () => {
 };
 
 //The game starts here
-document.addEventListener("DOMContentLoaded", () => {
-  guessButton.addEventListener("click", guessLetter);
-  inputField.addEventListener("keyup", (event) => {
-    if (event.key == "Enter") {
-      guessButton.click();
-    }
-  });
-  restartButton.addEventListener("click", beginTheGame);
-  beginTheGame();
-
-  playButton.addEventListener("click", () => {
-    new Audio("assets/harbor.mp3").play();
-  });
-  // Play music when dom loaded
-  playButton.click();
+guessButton.addEventListener("click", guessLetter);
+inputField.addEventListener("keyup", (event) => {
+  if (event.key == "Enter") {
+    guessButton.click();
+  }
 });
+restartButton.addEventListener("click", beginTheGame);
+beginTheGame();
+
+playButton.addEventListener("click", () => {
+  new Audio("assets/harbor.mp3").play();
+});
+// Play music when dom loaded
+playButton.click();
