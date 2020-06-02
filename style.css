@@ -1,12 +1,26 @@
-.win,
-.lose {
-  display: none;
+.container {
+  display: grid;
+  grid-template-areas:
+    "t t t t t t"
+    "g g . . s s";
+  grid-template-rows: auto auto;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
 }
 
-.win h2 {
-  color: red;
+.title {
+  grid-area: t;
 }
 
-.lose h2 {
-  color: blue;
+.title h1,
+p {
+  text-align: center;
+}
+
+.gallow {
+  grid-area: g;
+}
+
+.sign {
+  grid-area: s;
 }
