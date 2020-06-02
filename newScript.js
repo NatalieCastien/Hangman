@@ -41,6 +41,7 @@ const winTheGame = function () {
 
 const loseTheGame = function () {
   loseAnimation.style.display = "block";
+  new Audio("assets/ghostwail.mp3").play();
   gameDone = true;
 };
 
