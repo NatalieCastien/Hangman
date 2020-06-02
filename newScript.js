@@ -8,6 +8,7 @@ const lifeSpan = document.getElementById("lifeSpan");
 const guessedLetters = document.getElementById("guessedLetters");
 const guessButton = document.querySelector(".guess");
 const restartButton = document.querySelector(".restart");
+const playButton = document.querySelector(".musicbutton");
 const noose = document.querySelector(".noose");
 
 const wordList = [
@@ -162,10 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   restartButton.addEventListener("click", beginTheGame);
   beginTheGame();
-});
 
-//Button to start background music
-let playButton = document.querySelector(".musicbutton");
-playButton.addEventListener("click", () => {
-  new Audio("assets/harbor.mp3").play();
+  playButton.addEventListener("click", () => {
+    new Audio("assets/harbor.mp3").play();
+  });
+  // Play music when dom loaded
+  playButton.click();
 });
