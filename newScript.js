@@ -1,16 +1,5 @@
-const wordList = [
-  "vis",
-  "toeter",
-  "developer",
-  "telefoon",
-  "moeder",
-  "snoer",
-  "geeuw",
-];
-let lives = 3;
-let tries = 0;
-let gameDone;
-
+// Elements
+const inputSection = document.querySelector(".input-section");
 const inputField = document.querySelector("input");
 const winAnimation = document.querySelector(".win");
 const loseAnimation = document.querySelector(".lose");
@@ -20,7 +9,27 @@ const guessedLetters = document.getElementById("guessedLetters");
 const guessButton = document.querySelector(".guess");
 const restartButton = document.querySelector(".restart");
 
-//Willekeurig woord
+const wordList = [
+  "graveyard",
+  "zombie",
+  "amputation",
+  "scream",
+  "slaughter",
+  "assasin",
+  "crow",
+  "scream",
+  "pitchfork",
+  "gallows",
+  "witchcraft",
+  "shadow",
+  "nightmare",
+  "moonlight",
+];
+
+let lives = 3;
+let tries = 0;
+let gameDone;
+
 const randomWord = (words) => words[Math.floor(Math.random() * words.length)];
 
 let inputs;
@@ -36,18 +45,20 @@ const cleanInputField = function () {
 
 const winTheGame = function () {
   winAnimation.style.display = "block";
+  inputSection.style.display = "none";
   gameDone = true;
 };
 
 const loseTheGame = function () {
   loseAnimation.style.display = "block";
+  inputSection.style.display = "none";
   new Audio("assets/ghostwail.mp3").play();
   gameDone = true;
 };
 
 const displayWrongLetters = function (word, inputs) {
   let wrongLetters = inputs.filter(function (letter) {
-    // If the letter is in the word return.... false/true (we want to remove that then)
+    // get the letters that aren't in the word
     return !word.includes(letter);
   });
   guessedLetters.innerHTML = wrongLetters.join(" ");
@@ -67,7 +78,11 @@ const displayTheWord = function (word, inputLetterWords) {
 const isLetterIncluded = (word, letter) => {
   if (!word.includes(letter)) {
     tries++;
-    lifeSpan.innerHTML = lives - tries;
+    if (lives - tries == 1) {
+      lifeSpan.innerHTML = `You have ${lives - tries} life remaining`;
+    } else {
+      lifeSpan.innerHTML = `You have ${lives - tries} lives remaining`;
+    }
   }
 };
 const fillGuessedLetters = (inputs, letter) => {
@@ -77,51 +92,68 @@ const fillGuessedLetters = (inputs, letter) => {
 };
 
 const guessLetter = function () {
-  if (gameDone) {
-    return;
-  }
+  // if (gameDone) {
+  //   return;
+  // }
+
   const input = inputField.value;
   cleanInputField();
 
-  //Check of de letter niet al eerder is ingevoerd
-  if (inputs.includes(input) || input === "") {
-    return;
-  }
+  // Check if input is a letter
+  const regex = /[a-zA-Z]+/;
+  if (regex.test(input) == true) {
+    inputField.placeholder = "Try yer luck!";
+    inputField.focus();
 
-  isLetterIncluded(word, input);
-  fillGuessedLetters(inputs, input);
+    //Check whether the letter has not been guessed before
+    if (inputs.includes(input) || input === "") {
+      return;
+    }
 
-  displayTheWord(word, inputs);
-  displayWrongLetters(word, inputs);
+    isLetterIncluded(word, input);
+    fillGuessedLetters(inputs, input);
 
-  if (isWordGuessed(word, inputs)) {
-    winTheGame();
-  } else if (tries >= lives) {
-    loseTheGame();
+    displayTheWord(word, inputs);
+    displayWrongLetters(word, inputs);
+
+    if (isWordGuessed(word, inputs)) {
+      winTheGame();
+    } else if (tries >= lives) {
+      loseTheGame();
+    }
+  } else {
+    inputField.placeholder = "Tryin' to cheat ay?";
   }
 };
 
-//Startscherm van het spel
+//Starting screen of the game
 function beginTheGame() {
   gameDone = false;
   winAnimation.style.display = "none";
   loseAnimation.style.display = "none";
+  inputSection.style.display = "block";
   cleanInputField();
 
   word = randomWord(wordList).split("");
   wordToBeGuessed.innerHTML = `"${word.join("")}"`;
 
   tries = 0;
-  lifeSpan.innerHTML = lives - 0;
+  lifeSpan.innerHTML = `You have ${lives} lives remaining`;
 
   inputs = [];
   displayTheWord(word, inputs);
   displayWrongLetters(word, inputs);
+  inputField.focus();
 }
 
-//Hier start het!
+//The game starts here
 document.addEventListener("DOMContentLoaded", function () {
   guessButton.addEventListener("click", guessLetter);
+  inputField.addEventListener("keyup", (event) => {
+    if (event.key == "Enter") {
+      guessButton.click();
+    }
+  });
   restartButton.addEventListener("click", beginTheGame);
   beginTheGame();
 });
