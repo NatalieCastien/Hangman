@@ -44,8 +44,16 @@ const cleanInputField = function () {
 };
 
 const winTheGame = function () {
-  winAnimation.style.display = "block";
   inputSection.style.display = "none";
+  winAnimation.style.display = "block";
+
+  new Audio("assets/sighofrelief.mp3").play();
+  function removeNoose() {
+    const noose = document.querySelector(".noose");
+    noose.classList.add("nooseaway");
+  }
+  removeNoose();
+
   gameDone = true;
 };
 
@@ -53,6 +61,11 @@ const loseTheGame = function () {
   loseAnimation.style.display = "block";
   inputSection.style.display = "none";
   new Audio("assets/ghostwail.mp3").play();
+  function ghostAppearing() {
+    const ghost = document.querySelector(".ghost");
+    ghost.classList.add("ghostfadein");
+  }
+  ghostAppearing();
   gameDone = true;
 };
 
