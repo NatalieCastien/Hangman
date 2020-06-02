@@ -171,5 +171,3 @@ beginTheGame();
 playButton.addEventListener("click", () => {
   new Audio("assets/harbor.mp3").play();
 });
-// Play music when dom loaded
-playButton.click();
