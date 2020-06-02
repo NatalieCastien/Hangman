@@ -11,15 +11,16 @@ body {
   background-image: url("assets/backgroundharbor.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #0e0f14;
 }
 
 .container {
   display: grid;
   grid-template-areas:
-    "t t t t t t"
-    "g g . . s s";
-  grid-template-rows: auto 600px;
-  grid-template-columns: repeat(6, auto);
+    "t t t t t"
+    "g . . . s";
+  grid-template-rows: auto 700px;
+  grid-template-columns: auto repeat(3, auto) 1fr;
   grid-gap: 5px;
 }
 
@@ -40,7 +41,7 @@ body {
 }
 
 .noose {
-  max-width: 50%;
+  max-width: 40%;
   position: relative;
   top: -300px;
   left: 100px;
@@ -80,10 +81,11 @@ body {
   color: white;
   font-family: "Trinigan";
   text-shadow: 3px 3px 10px black, -3px -3px 6px black;
+  /* background: url(assets/woodensign.png); */
 }
 .sign-content {
   position: absolute;
-  top: 29%;
+  top: 23%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -142,7 +144,6 @@ button:hover {
   box-shadow: 1px 1px 5px white;
 }
 button:focus {
-  border: none;
   outline: none;
 }
 
