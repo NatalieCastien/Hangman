@@ -7,6 +7,7 @@
   src: url("/assets/trinigan.ttf");
 }
 
+/*Background*/
 body {
   background-image: url("assets/backgroundharbor.jpg");
   background-repeat: no-repeat;
@@ -24,10 +25,27 @@ body {
   grid-gap: 5px;
 }
 
+/* Titel */
 .title {
   grid-area: t;
   background: linear-gradient(black);
   background-blend-mode: multiply;
+}
+
+.title h1 {
+  color: ghostwhite;
+  font-family: "Black Flag";
+  font-weight: normal;
+  font-size: 60px;
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
+.title p {
+  color: ghostwhite;
+  font-family: "Trinigan";
+  margin-top: 0px;
+  font-size: 25px;
 }
 
 .title h1,
@@ -40,20 +58,21 @@ body {
   align-items: right;
 }
 
+.ghost {
+  opacity: 50%;
+  position: absolute;
+  bottom: -35px;
+  left: 10px;
+  transform: scale(0.9);
+}
+
+/*Galg animatie */
 .noose {
   max-width: 40%;
   position: relative;
   top: -300px;
   left: 100px;
   animation: dangling 10000ms infinite both;
-}
-
-.ghost {
-  opacity: 60%;
-  position: absolute;
-  bottom: -35px;
-  left: 10px;
-  transform: scale(0.9);
 }
 
 @keyframes dangling {
@@ -74,6 +93,7 @@ body {
   }
 }
 
+/*Houten bord*/
 .sign {
   grid-area: s;
   text-align: center;
@@ -124,6 +144,7 @@ body {
 #guessedLetters {
   padding: 10px;
   font-size: 1.2rem;
+  height: 20px;
 }
 #incorrect {
   padding-top: 20px;
